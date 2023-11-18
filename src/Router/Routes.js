@@ -13,6 +13,7 @@ import HomeServices from "../Components/HomeServices/HomeServices";
 import MyServices from "../Components/DashBoard/MyServices";
 import MyOrders from "../Components/DashBoard/MyOrders";
 import MyProfile from "../Components/DashBoard/MyProfile";
+import MyClients from "../Components/DashBoard/MyClients";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/myprofile",
         element: <MyProfile></MyProfile>,
+      },
+      {
+        path: "/myclients",
+        element: <MyClients></MyClients>,
       },
     ],
   },
