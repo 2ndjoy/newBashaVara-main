@@ -15,7 +15,7 @@ const CheckDetails = () => {
             <p className="py-6">
               <b>Contact:</b>
             </p>
-            <button className="btn btn-black">Rent</button>
+            <button className="btn btn-black">Add for Rent</button>
           </div>
         </div>
       </div>

@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../UserContext/AuthProvider";
 
 const AddService = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -13,9 +15,51 @@ const AddService = () => {
   const { user } = useContext(AuthContext);
 
   const handleAddService = (data) => {
-    console.log(data);
-  };
+    // console.log(data);
 
+    const photo = data.photo[0];
+    const formData = new FormData();
+    formData.append("image", photo);
+    const url = `https://api.imgbb.com/1/upload?key=94c2a478e54e97d802b6d035fdda4286`;
+
+    fetch(url, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        if (imgData.success) {
+          const service = {
+            renterName: data.sellerName,
+            rentFee: data.rentFee,
+            availability: data.availability,
+            size: data.size,
+            description: data.description,
+            serviceImage: imgData.data.display_url,
+            renterPhoneNumber: data.renterPhoneNumber,
+            serviceLocation: data.serviceLocation,
+            email: user.email,
+          };
+          fetch("http://localhost:5000/services", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(service),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result.acknowledged) {
+                toast.success(`Added to the database successfully`);
+                navigate("/services");
+                reset();
+              }
+            });
+          console.log(service);
+          // reset();
+        }
+      });
+  };
   return (
     <div className="grid  justify-center py-11">
       <div className="w-96 p-7">
