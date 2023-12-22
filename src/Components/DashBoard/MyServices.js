@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../UserContext/AuthProvider";
+import toast from "react-hot-toast";
 
 const MyServices = () => {
   const { user, loading } = useContext(AuthContext);
@@ -16,6 +17,24 @@ const MyServices = () => {
   if (loading) {
     refetch();
   }
+
+  const handleDelete = (_id) => {
+    console.log(_id);
+    const procced = window.confirm("Are you sure to confirm this order");
+    if (procced) {
+      fetch(`http://localhost:5000/services/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            refetch();
+            toast.success("Deleted successfully");
+          }
+        });
+    }
+  };
 
   console.log(services);
   return (
@@ -52,7 +71,12 @@ const MyServices = () => {
                       <button className="btn btn-success btn-xs">Edit</button>
                     </td>
                     <td>
-                      <button className="btn btn-error btn-xs">Delete</button>
+                      <button
+                        className="btn btn-error btn-xs"
+                        onClick={() => handleDelete(serv._id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))
