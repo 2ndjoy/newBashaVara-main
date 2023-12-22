@@ -5,14 +5,15 @@ import Cards from "../Services/Cards";
 import HomeBanner from "./HomeBanner";
 import Contact from "../Contact/Contact";
 import Services from "../Services/Services";
+import HomeServices from "../Services/HomeServices";
 
 const Home = () => {
   return (
     <div>
       <FilterBox></FilterBox>
       <AddsOnHome></AddsOnHome>
-      <div className="lg:flex grid mx-8 px-5 gap-2">
-        <Services></Services>
+      <div className="lg:flex grid gap-24 mx-40 px-16 mt-16">
+        <HomeServices></HomeServices>
       </div>
       <HomeBanner></HomeBanner>
       <Contact></Contact>

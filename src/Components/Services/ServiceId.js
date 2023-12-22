@@ -13,7 +13,8 @@ const ServiceId = ({ service }) => {
     renterPhoneNumber,
     serviceLocation,
   } = service;
-  console.log(_id);
+  // console.log(_id)
+  // const serbiv;
   return (
     <div>
       <div className="card card-compact w-56 h-3/4 bg-slate-400 text-black shadow-xl">
@@ -49,7 +50,7 @@ const ServiceId = ({ service }) => {
             {description.toUpperCase()}
           </p>
           <div className="card-actions justify-end">
-            <Link to="/checkDetails">
+            <Link to={`/services/${_id}`}>
               <button className="btn btn-primary">Check</button>
             </Link>
           </div>

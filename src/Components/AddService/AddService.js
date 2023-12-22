@@ -113,12 +113,12 @@ const AddService = () => {
               })}
             >
               <option value="">Select a location</option>{" "}
-              <option value="sylhet">Sylhet</option>
-              <option value="dhaka">Dhaka</option>
-              <option value="chittagong">Chittagong</option>
-              <option value="barishal">Barishal</option>
-              <option value="rajshahi">Rajshahi</option>
-              <option value="khulna">Khulna</option>
+              <option value="Zindabazar">Zindabazar</option>
+              <option value="Tilagor">Tilagor</option>
+              <option value="Upashahar">Upashahar</option>
+              <option value="Amberkhana">Amberkhana</option>
+              <option value="Chondipul">Chondipul</option>
+              <option value="Baluchor">Baluchor</option>
             </select>
           </div>
 

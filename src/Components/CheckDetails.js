@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useContext } from "react";
 import home1 from "../Components/imagess/home1.jpg";
+import { AuthContext } from "../UserContext/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
+import { useLoaderData } from "react-router-dom";
 
 const CheckDetails = () => {
+  const {
+    _id,
+    renterName,
+    rentFee,
+    availability,
+    size,
+    description,
+    serviceImage,
+    renterPhoneNumber,
+    serviceLocation,
+    email,
+  } = useLoaderData();
+  console.log("CheckDetails", _id);
+
   return (
     <div>
       <div className="hero min-h-screen ">
         <div className="hero-content flex-col lg:flex-row">
-          <img src={home1} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={serviceImage} className="max-w-sm rounded-lg shadow-2xl" />
           <div>
-            <h1 className=" font-bold py-6">Available From:</h1>
+            <h1 className=" font-bold py-6">Available From:{availability}</h1>
             <p className="py-6">
-              <b>Description:</b>
+              <b>Description:{description}</b>
             </p>
             <p className="py-6">
-              <b>Contact:</b>
+              <b>Contact:{renterPhoneNumber}</b>
             </p>
             <button className="btn btn-black">Add for Rent</button>
           </div>

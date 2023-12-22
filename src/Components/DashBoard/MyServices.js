@@ -1,6 +1,23 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { AuthContext } from "../../UserContext/AuthProvider";
 
 const MyServices = () => {
+  const { user, loading } = useContext(AuthContext);
+
+  const { data: services = [], refetch } = useQuery({
+    queryKey: ["services"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/services/${user?.email}`);
+      const data = await res.json();
+      return data;
+    },
+  });
+  if (loading) {
+    refetch();
+  }
+
+  console.log(services);
   return (
     <div className="flex justify-center">
       <div className="">
@@ -22,44 +39,25 @@ const MyServices = () => {
             </thead>
             <tbody>
               {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Zindabazar</td>
-                <td>Small</td>
-                <td>01111121212</td>
-                <td>
-                  <button className="btn btn-success btn-xs">Edit</button>
-                </td>
-                <td>
-                  <button className="btn btn-error btn-xs">Delete</button>
-                </td>
-              </tr>
+              {loading ? (
+                <p>Loading</p>
+              ) : (
+                services?.map((serv) => (
+                  <tr>
+                    <th></th>
+                    <td>{serv.serviceLocation}</td>
+                    <td>{serv.size}</td>
+                    <td>{serv.renterPhoneNumber}</td>
+                    <td>
+                      <button className="btn btn-success btn-xs">Edit</button>
+                    </td>
+                    <td>
+                      <button className="btn btn-error btn-xs">Delete</button>
+                    </td>
+                  </tr>
+                ))
+              )}
               {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>Chowhatta</td>
-                <td>Large</td>
-                <td>0171464815</td>
-                <td>
-                  <button className="btn btn-success btn-xs">Edit</button>
-                </td>
-                <td>
-                  <button className="btn btn-error btn-xs">Delete</button>
-                </td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Tilagor</td>
-                <td>Medium</td>
-                <td>0145684512</td>
-                <td>
-                  <button className="btn btn-success btn-xs">Edit</button>
-                </td>
-                <td>
-                  <button className="btn btn-error btn-xs">Delete</button>
-                </td>
-              </tr>
             </tbody>
           </table>
         </div>
