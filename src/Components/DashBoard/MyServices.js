@@ -52,7 +52,7 @@ const MyServices = () => {
                 <th>Location</th>
                 <th>Size</th>
                 <th>Contact no</th>
-                <th></th>
+                {/* <th></th> */}
                 <th></th>
               </tr>
             </thead>
@@ -67,9 +67,9 @@ const MyServices = () => {
                     <td>{serv.serviceLocation}</td>
                     <td>{serv.size}</td>
                     <td>{serv.renterPhoneNumber}</td>
-                    <td>
+                    {/* <td>
                       <button className="btn btn-success btn-xs">Edit</button>
-                    </td>
+                    </td> */}
                     <td>
                       <button
                         className="btn btn-error btn-xs"

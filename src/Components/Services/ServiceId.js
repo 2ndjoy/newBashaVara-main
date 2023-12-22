@@ -13,8 +13,7 @@ const ServiceId = ({ service }) => {
     renterPhoneNumber,
     serviceLocation,
   } = service;
-  // console.log(_id)
-  // const serbiv;
+
   return (
     <div>
       <div className="card card-compact w-56 h-3/4 bg-slate-400 text-black shadow-xl">
@@ -31,7 +30,7 @@ const ServiceId = ({ service }) => {
             {size.toUpperCase()}
           </p>
           <p className="bold">
-            <span className="font-bold">Rent fee:</span> {rentFee}
+            <span className="font-bold">Rent fee:</span> {rentFee} tk
           </p>
           <p className="bold">
             <span className="font-bold">Available from</span>{" "}
@@ -47,7 +46,7 @@ const ServiceId = ({ service }) => {
           </p>
           <p>
             <span className="font-bold">Details: </span>
-            {description.toUpperCase()}
+            {description}
           </p>
           <div className="card-actions justify-end">
             <Link to={`/services/${_id}`}>

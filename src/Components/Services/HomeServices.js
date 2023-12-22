@@ -19,7 +19,7 @@ const HomeServices = () => {
           <div className="card card-compact w-56 h-3/4 bg-slate-400 text-black shadow-xl">
             <figure>
               <img
-                src={servic.serviceImage}
+                src={servic?.serviceImage}
                 alt="Shoes"
                 className="h-56 w-56"
               />
@@ -27,33 +27,34 @@ const HomeServices = () => {
             <div className="card-body">
               <p className="bold">
                 <span className="font-bold">Location:</span>{" "}
-                {servic.serviceLocation.toUpperCase()}
+                {servic?.serviceLocation}
               </p>
               <p className="bold">
                 <span className="font-bold">Size: </span>
-                {servic.size.toUpperCase()}
+                {servic?.size}
               </p>
               <p className="bold">
-                <span className="font-bold">Rent fee:</span> {servic.rentFee}
+                <span className="font-bold">Rent fee:</span> {servic?.rentFee}{" "}
+                tk
               </p>
               <p className="bold">
                 <span className="font-bold">Available from</span>{" "}
-                {servic.availability.toUpperCase()}
+                {servic?.availability}
               </p>
               <p className="bold">
                 <span className="font-bold">Owner: </span>
-                {servic.renterName.toUpperCase()}
+                {servic?.renterName}
               </p>
               <p className="bold">
                 <span className="font-bold">Contact: </span>
-                {servic.renterPhoneNumber.toUpperCase()}
+                {servic?.renterPhoneNumber}
               </p>
               <p>
                 <span className="font-bold">Details: </span>
-                {servic.description.toUpperCase()}
+                {servic?.description}
               </p>
               <div className="card-actions justify-end">
-                <Link to={`/services/${servic._id}`}>
+                <Link to={`/services/${servic?._id}`}>
                   <button className="btn btn-primary">Check</button>
                 </Link>
               </div>
