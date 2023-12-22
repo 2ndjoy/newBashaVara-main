@@ -1,13 +1,26 @@
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../UserContext/AuthProvider";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import SmallLoaing from "../../SmallLoading/SmallLoaing";
+import { useQuery } from "@tanstack/react-query";
 
 const Header = () => {
   const { user, logOut, loading } = useContext(AuthContext);
   const handlelogout = () => {
     logOut();
   };
+
+  const [userses, setuserss] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setuserss(data));
+  }, [user]);
+
+  const [userss] = userses;
+  console.log("userss", userses);
+
   return (
     <div className="navbar bg-base-100">
       <div className="navbar-start">
@@ -39,9 +52,11 @@ const Header = () => {
             <li>
               <Link to="/homeservices">Home Service</Link>
             </li>
-            <li>
-              <Link to="/addservices">Add Rental Service</Link>
-            </li>
+            {userss?.role === "owner" && (
+              <li>
+                <Link to="/addservices">Add Rental Service</Link>
+              </li>
+            )}
           </ul>
         </div>
         <Link to="/" className="normal-case text-xl font-bold text-black">
@@ -85,18 +100,28 @@ const Header = () => {
                       <b>Dashboard</b>
                     </summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                      <li>
-                        <Link to="/myservices">My services</Link>
-                      </li>
-                      <li>
-                        <Link to="/myorders">My orders</Link>
-                      </li>
+                      {userss?.role === "owner" ? (
+                        <li>
+                          <Link to="/myservices">My services</Link>
+                        </li>
+                      ) : (
+                        <li>
+                          <Link to="/myorders">My orders</Link>
+                        </li>
+                      )}
                       <li>
                         <Link to="/myprofile">My profile</Link>
                       </li>
-                      <li>
-                        <Link to="/myclients">My clients</Link>
-                      </li>
+                      {userss?.role === "owner" && (
+                        <li>
+                          <Link to="/myclients">My clients</Link>
+                        </li>
+                      )}
+                      {userss?.role === "admin" && (
+                        <li>
+                          <Link to="/allusers">See all users</Link>
+                        </li>
+                      )}
                     </ul>
                   </details>
                 </li>

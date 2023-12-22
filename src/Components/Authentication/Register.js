@@ -28,8 +28,22 @@ const Register = () => {
       .catch((error) => console.error(error));
   };
 
-  //   const imageHostKEy = process.env.REACT_APP_IMGB_APIKEY;
-  // console.log(imageHostKEy);
+  const saveUser = (email, name, role) => {
+    const user = { email, name, role };
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // setCreatedemail(email);
+        // console.log(data)
+      });
+  };
+
   const handleSignUp = (data) => {
     const photo = data.photo[0];
     const formData = new FormData();
@@ -49,6 +63,7 @@ const Register = () => {
               const user = result.user;
               console.log(user);
               // saveUser(data.email, data.name);
+              saveUser(data.email, data.name, data.role);
               updateUserProfile(data.name, imgData.data.display_url);
               // calling handle email verification
               handleEmailVerification();
@@ -59,6 +74,7 @@ const Register = () => {
               // setLoading(false);
             })
             .catch((error) => {
+              // setLoading(false);
               console.error(error);
               setsignUpError(error.message);
             });
@@ -136,6 +152,7 @@ const Register = () => {
                 type="file"
               />
             </div>
+
             {errors.photo && (
               <p role="alert" className="text-warning">
                 {errors.photo.message}

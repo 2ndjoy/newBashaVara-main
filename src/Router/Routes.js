@@ -14,6 +14,7 @@ import MyServices from "../Components/DashBoard/MyServices";
 import MyOrders from "../Components/DashBoard/MyOrders";
 import MyProfile from "../Components/DashBoard/MyProfile";
 import MyClients from "../Components/DashBoard/MyClients";
+import SeeAlluser from "../Components/DashBoard/SeeAlluser";
 
 const router = createBrowserRouter([
   {
@@ -48,7 +49,10 @@ const router = createBrowserRouter([
         path: "/forgetpassword",
         element: <ForgetPassword></ForgetPassword>,
       },
-
+      {
+        path: "/allusers",
+        element: <SeeAlluser></SeeAlluser>,
+      },
       {
         path: "/checkDetails",
         element: (
@@ -83,7 +87,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/myprofile",
-        element: <MyProfile></MyProfile>,
+        element: (
+          <PrivateRoute>
+            <MyProfile></MyProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myclients",
