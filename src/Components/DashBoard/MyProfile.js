@@ -18,7 +18,7 @@ const MyProfile = () => {
       .then((data) => setMyData(data));
   }, [user?.email]);
   const [myId] = myData;
-  console.log("myData", myId._id);
+  console.log("myData", myId?._id);
 
   const {
     register,

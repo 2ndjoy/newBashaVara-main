@@ -75,54 +75,8 @@ const MyOrders = () => {
                   <td>{serv?.location}</td>
                   <td>{serv?.size}</td>
                   <td>{serv?.contactNo}</td>
-                  <td>
-                    {!cancel ? (
-                      <button className="btn btn-success btn-xs">Pay</button>
-                    ) : (
-                      <b className="text-red-500">Cancelled</b>
-                    )}
-                  </td>
-                  <td>
-                    {!cancel ? (
-                      <label
-                        htmlFor="my_modal_6"
-                        className="btn btn-xs btn-secondary"
-                      >
-                        Verify
-                      </label>
-                    ) : (
-                      <b className="text-red-500">Cancelled</b>
-                    )}
-                    {/* Put this part before </body> tag */}
-                    <input
-                      type="checkbox"
-                      id="my_modal_6"
-                      className="modal-toggle"
-                    />
-                    <div className="modal">
-                      <div className="modal-box">
-                        <div className="bg-base p-3 m-3 grid justify-center">
-                          Send NID/PASSPORT to owner for verification
-                          <PhotoUploadBox></PhotoUploadBox>
-                          <div className="flex justify-end">
-                            <label
-                              className="modal-backdrop btn btn-active btn-success mx-2 mt-2 pt-1"
-                              htmlFor="my_modal_6"
-                              onClick={sendVerificationData}
-                            >
-                              Send
-                            </label>
-                            <label
-                              className="modal-backdrop btn btn-active btn-error mt-2 pt-1"
-                              htmlFor="my_modal_6"
-                            >
-                              Close
-                            </label>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
+                  <td></td>
+                  <td></td>
                   <td>
                     <button
                       onClick={() => handleDelete(serv._id)}
