@@ -161,6 +161,22 @@ const Register = () => {
 
             <div className="form-control w-full max-w-xs">
               <label className="label">
+                <span className="label-text">Select role</span>
+              </label>
+              <select
+                className="select input-bordered w-full max-w-xs"
+                {...register("role")}
+              >
+                <option value="taker" disabled selected>
+                  Select a role
+                </option>
+                <option value="owner">Owner</option>
+                <option value="taker">Rent taker</option>
+              </select>
+            </div>
+
+            <div className="form-control w-full max-w-xs">
+              <label className="label">
                 <span className="label-text text-black">Password</span>
               </label>
               <input
