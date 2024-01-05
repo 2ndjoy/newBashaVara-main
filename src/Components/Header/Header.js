@@ -7,6 +7,7 @@ import img1Home from "../../icons/home_263115.png";
 import img1Add from "../../icons/add_992651.png";
 import img1Serv from "../../icons/customer_686348.png";
 import img1profile from "../../icons/add_9sdfd92651.png";
+import homeImg from "../../icons/2163350.png";
 
 const Header = () => {
   const { user, logOut, loading } = useContext(AuthContext);
@@ -50,21 +51,33 @@ const Header = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/services">Services</Link>
+              <Link to="/services">
+                {" "}
+                <img src={img1Serv} className="h-4"></img>Services
+              </Link>
             </li>
 
             <li>
-              <Link to="/homeservices">Home Service</Link>
+              <Link to="/homeservices">
+                {" "}
+                <img src={img1Home} className="h-4"></img>Home Service
+              </Link>
             </li>
             {userss?.role === "owner" && (
               <li>
-                <Link to="/addservices">Add Rental Service</Link>
+                <Link to="/addservices">
+                  {" "}
+                  <img src={img1Add} className="h-4"></img> Add Rental Service
+                </Link>
               </li>
             )}
           </ul>
         </div>
         <Link to="/" className="normal-case text-xl font-bold text-black">
-          <i>FindBasha</i>
+          <i className="flex align-items-center justify-center gap-2">
+            {" "}
+            <img src={homeImg} className="h-6"></img>FindBasha
+          </i>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -81,12 +94,14 @@ const Header = () => {
             </Link>
           </li>
 
-          <li>
-            <Link to="/addservices">
-              {" "}
-              <img src={img1Add} className="h-4"></img>Add Rental Service
-            </Link>
-          </li>
+          {userss?.role === "owner" && (
+            <li>
+              <Link to="/addservices">
+                {" "}
+                <img src={img1Add} className="h-4"></img> Add Rental Service
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
       <div className="navbar-end">
