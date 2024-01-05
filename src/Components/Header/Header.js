@@ -3,6 +3,10 @@ import { AuthContext } from "../../UserContext/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import SmallLoaing from "../../SmallLoading/SmallLoaing";
 import { useQuery } from "@tanstack/react-query";
+import img1Home from "../../icons/home_263115.png";
+import img1Add from "../../icons/add_992651.png";
+import img1Serv from "../../icons/customer_686348.png";
+import img1profile from "../../icons/add_9sdfd92651.png";
 
 const Header = () => {
   const { user, logOut, loading } = useContext(AuthContext);
@@ -66,15 +70,22 @@ const Header = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/services">Services</Link>
+            <Link to="/services">
+              <img src={img1Serv} className="h-4"></img>Services
+            </Link>
           </li>
 
           <li>
-            <Link to="/homeservices">Home Service</Link>
+            <Link to="/homeservices">
+              <img src={img1Home} className="h-4"></img>Home Service
+            </Link>
           </li>
 
           <li>
-            <Link to="/addservices">Add Rental Service</Link>
+            <Link to="/addservices">
+              {" "}
+              <img src={img1Add} className="h-4"></img>Add Rental Service
+            </Link>
           </li>
         </ul>
       </div>
@@ -95,9 +106,9 @@ const Header = () => {
               >
                 <li>
                   <details className="dropdown mb-32">
-                    <summary className="m-1 ">
+                    <summary className="m-1 font-semibold flex align-items-center gap-2">
                       {" "}
-                      <b>Dashboard</b>
+                      <img src={img1profile} className="h-4"></img> Dashboard
                     </summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
                       {userss?.role === "owner" ? (
