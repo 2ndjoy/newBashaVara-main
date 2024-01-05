@@ -12,17 +12,18 @@ const SeeAlluser = () => {
   console.log("allUsers", allUsers);
 
   return (
-    <div>
+    <div className="grid justify-center gap-6">
       {allUsers.map((item) => (
-        <div className="card card-side bg-base-100 shadow-xl">
+        <div className="card w-96 bg-base-500 shadow-xl">
           <figure>
+            {" "}
             <img src={item?.nid?.imageUrl} />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{item?.name}</h2>
-            <h2 className="card-title">{item?.email}</h2>
+            <h2 className="card-title">User Name: {item?.name}</h2>
+            <p>User Email: {item?.email}</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary">Approve Verification</button>
+              <button className="btn btn-primary">Allow as verified</button>
             </div>
           </div>
         </div>
