@@ -28,8 +28,6 @@ const MyProfile = () => {
   } = useForm();
 
   const handleAddService = (data) => {
-    // console.log(data);
-
     const photo = data.photo[0];
     const formData = new FormData();
 
