@@ -189,7 +189,9 @@ const Register = () => {
                     message: "password must be 6 char long",
                   },
                   pattern: {
-                    message: "password must be strong",
+                    value: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])/,
+                    message:
+                      "password must have a special case and a number and a character",
                   },
                 })}
               />
