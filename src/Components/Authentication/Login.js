@@ -117,10 +117,6 @@ const Login = () => {
               Create new Account
             </Link>
           </p>
-          <div className="divider">OR</div>
-          <button className="btn text-blue-900 btn-outline w-full">
-            CONTINUE WITH GOOGLE
-          </button>
         </div>
       </div>
     </div>
