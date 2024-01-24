@@ -4,6 +4,8 @@ import { AuthContext } from "../UserContext/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { useLoaderData } from "react-router-dom";
 import toast from "react-hot-toast";
+import Reviews from "./Services/Reviews";
+import GiveReview from "./Services/GiveReview";
 
 const CheckDetails = () => {
   const { user } = useContext(AuthContext);
@@ -19,7 +21,7 @@ const CheckDetails = () => {
     serviceLocation,
     email,
   } = useLoaderData();
-  console.log("CheckDetails", _id);
+  // console.log("CheckDetails", _id);
 
   const handleRent = () => {
     if (user?.email) {
@@ -73,27 +75,8 @@ const CheckDetails = () => {
         </div>
       </div>
       <div className="px-5 py-5 mx-6 lg:flex justify-around">
-        <div className="">
-          <div>
-            <b>Give Review:</b>
-          </div>
-          <input
-            type="text"
-            placeholder="Type here"
-            className="input mt-4 input-bordered input-error w-full max-w-xs"
-          />
-          <br />
-          <button className="btn mt-5">Send</button>
-        </div>
-        <div className="lg:mt-0 mt-9 lg:pt-0 pt-9">
-          <b>Other's Review:</b>
-          <hr />
-          <br />
-          <div className="mt-2  p-2 border rounded border-4">
-            <p className="font-semibold ">Name</p>
-            <br /> <p>Very Good Condtion</p>
-          </div>
-        </div>
+        <GiveReview></GiveReview>
+        <Reviews></Reviews>
       </div>
     </div>
   );

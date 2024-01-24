@@ -161,7 +161,7 @@ function FilterBox() {
                       {dat.description}
                     </p>
                     <div className="card-actions justify-end">
-                      <Link to="/checkDetails">
+                      <Link to={`/services/${dat._id}`}>
                         <button className="btn btn-primary">Check</button>
                       </Link>
                     </div>
