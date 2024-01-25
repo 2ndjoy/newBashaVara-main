@@ -33,12 +33,12 @@ const Login = () => {
           toast.error("Please verify email");
           setLoading(false);
         }
-        console.log(data.email, data.password);
       })
       .catch((error) => {
         // console.log(error.message)
-        // setLoading(false);
+        setLoading(false);
         setLoginError(error.message);
+        // setLoading(false);
       });
   };
 

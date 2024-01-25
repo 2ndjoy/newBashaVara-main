@@ -22,8 +22,25 @@ const CheckDetails = () => {
       const reviewDetails = {
         service_id: _id,
         userName: user.displayName,
+        userEmail: user.email,
         review: review,
       };
+
+      fetch(`http://localhost:5000/reviews`, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(reviewDetails),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.acknowledged) {
+            toast.success("Thanks for your review");
+            setReview("");
+          }
+        });
       console.log("review:", reviewDetails);
 
       setReview("");
@@ -74,6 +91,15 @@ const CheckDetails = () => {
       console.log(rent);
     }
   };
+  const { data: reviewss = [], refetch } = useQuery({
+    queryKey: ["reviewss"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/reviews/${_id}`);
+      const data = await res.json();
+      return data;
+    },
+  });
+  console.log("reviewss", reviewss);
 
   return (
     <div>
@@ -98,9 +124,9 @@ const CheckDetails = () => {
           </div>
         </div>
       </div>
-      <div className="px-5 py-5 mx-6 lg:flex justify-around">
+      <div className="px-5 py-5 mx-6 lg:flex justify-around lg:mt-2 mt-9">
         <div>
-          <div>
+          <div className="lg:mb-0 mb-5">
             <input
               className="input input-bordered w-full max-w-xs"
               type="text"
@@ -109,14 +135,25 @@ const CheckDetails = () => {
               placeholder="Enter text..."
             />
             <button
-              className="mt-2 btn btn-sm btn-primary"
+              className="lg:mx-0  mx-3 mt-2 btn btn-sm btn-info"
               onClick={handleClick}
             >
               Give review
             </button>
           </div>
         </div>
-        <Reviews></Reviews>
+        <div className="lg:mt-0 mt-4">
+          <b>Reviews</b>
+          <br />
+          {reviewss.map((review) => (
+            <div className="border-solid border-2 border-blue-400 p-5 rounded lg:mt-0 mt-3">
+              <b>{review?.userName}</b>
+              {/* <hr className="h-5" /> */}
+              <br />
+              <p>{review?.review}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
