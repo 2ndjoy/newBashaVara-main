@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import home1 from "../Components/imagess/home1.jpg";
 import { AuthContext } from "../UserContext/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
@@ -9,6 +9,30 @@ import GiveReview from "./Services/GiveReview";
 
 const CheckDetails = () => {
   const { user } = useContext(AuthContext);
+  const [review, setReview] = useState("");
+
+  const handleReviewChange = (event) => {
+    setReview(event.target.value);
+  };
+
+  const handleClick = () => {
+    if (review.trim() !== "") {
+      // const
+
+      const reviewDetails = {
+        service_id: _id,
+        userName: user.displayName,
+        review: review,
+      };
+      console.log("review:", reviewDetails);
+
+      setReview("");
+      // You can perform any action with the input value here
+    } else {
+      toast.error("Input is empty. Please enter some text.");
+      // Optionally, you can show a message or perform some other action
+    }
+  };
   const {
     _id,
     renterName,
@@ -75,7 +99,23 @@ const CheckDetails = () => {
         </div>
       </div>
       <div className="px-5 py-5 mx-6 lg:flex justify-around">
-        <GiveReview></GiveReview>
+        <div>
+          <div>
+            <input
+              className="input input-bordered w-full max-w-xs"
+              type="text"
+              value={review}
+              onChange={handleReviewChange}
+              placeholder="Enter text..."
+            />
+            <button
+              className="mt-2 btn btn-sm btn-primary"
+              onClick={handleClick}
+            >
+              Give review
+            </button>
+          </div>
+        </div>
         <Reviews></Reviews>
       </div>
     </div>
