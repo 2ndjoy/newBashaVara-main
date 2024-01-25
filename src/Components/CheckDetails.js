@@ -8,7 +8,7 @@ import Reviews from "./Services/Reviews";
 import GiveReview from "./Services/GiveReview";
 
 const CheckDetails = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setLoading } = useContext(AuthContext);
   const [review, setReview] = useState("");
 
   const handleReviewChange = (event) => {
@@ -38,12 +38,14 @@ const CheckDetails = () => {
           console.log(data);
           if (data.acknowledged) {
             toast.success("Thanks for your review");
+
             setReview("");
+            refetch();
           }
         });
       console.log("review:", reviewDetails);
 
-      setReview("");
+      // setReview("");
       // You can perform any action with the input value here
     } else {
       toast.error("Input is empty. Please enter some text.");
@@ -63,6 +65,16 @@ const CheckDetails = () => {
     email,
   } = useLoaderData();
   // console.log("CheckDetails", _id);
+
+  const { data: reviewss = [], refetch } = useQuery({
+    queryKey: ["reviewss"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/reviews/${_id}`);
+      const data = await res.json();
+      return data;
+    },
+  });
+  console.log("reviewss", reviewss);
 
   const handleRent = () => {
     if (user?.email) {
@@ -85,21 +97,14 @@ const CheckDetails = () => {
         .then((result) => {
           if (result.acknowledged) {
             toast.success(`You Have booked successfully`);
+            // setLoading(true);
+            refetch();
           }
         });
 
       console.log(rent);
     }
   };
-  const { data: reviewss = [], refetch } = useQuery({
-    queryKey: ["reviewss"],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/reviews/${_id}`);
-      const data = await res.json();
-      return data;
-    },
-  });
-  console.log("reviewss", reviewss);
 
   return (
     <div>
