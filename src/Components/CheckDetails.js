@@ -151,7 +151,7 @@ const CheckDetails = () => {
           <b>Reviews</b>
           <br />
           {reviewss.map((review) => (
-            <div className="border-solid border-2 border-blue-400 p-5 rounded lg:mt-0 mt-3">
+            <div className="border-solid border-2 border-blue-400 p-5 rounded lg:mt-2 mt-3">
               <b>{review?.userName}</b>
               {/* <hr className="h-5" /> */}
               <br />
