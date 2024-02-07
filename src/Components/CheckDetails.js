@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import home1 from "../Components/imagess/home1.jpg";
 import { AuthContext } from "../UserContext/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +10,17 @@ import GiveReview from "./Services/GiveReview";
 const CheckDetails = () => {
   const { user, setLoading } = useContext(AuthContext);
   const [review, setReview] = useState("");
+
+  const [userses, setuserss] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setuserss(data));
+  }, [user]);
+
+  const [userss] = userses;
+  console.log("userss", userses);
 
   const handleReviewChange = (event) => {
     setReview(event.target.value);
@@ -127,29 +138,39 @@ const CheckDetails = () => {
               <b>Contact: </b>
               {renterPhoneNumber}
             </p>
-            <button className="btn btn-black" onClick={() => handleRent(_id)}>
-              Add for Rent
-            </button>
+            <p className="py-2">
+              <b>Email: </b>
+              {email}
+            </p>
+            {userss?.role === "taker" && (
+              <button className="btn btn-black" onClick={() => handleRent(_id)}>
+                Add for Rent
+              </button>
+            )}
           </div>
         </div>
       </div>
       <div className="px-5 py-5 mx-6 lg:flex justify-around lg:mt-2 mt-9">
         <div>
-          <div className="lg:mb-0 mb-5">
-            <input
-              className="input input-bordered w-full max-w-xs"
-              type="text"
-              value={review}
-              onChange={handleReviewChange}
-              placeholder="Enter text..."
-            />
-            <button
-              className="lg:mx-0  mx-3 mt-2 btn btn-sm btn-info"
-              onClick={handleClick}
-            >
-              Give review
-            </button>
-          </div>
+          {userss?.role === "taker" ? (
+            <div className="lg:mb-0 mb-5">
+              <input
+                className="input input-bordered w-full max-w-xs"
+                type="text"
+                value={review}
+                onChange={handleReviewChange}
+                placeholder="Enter text..."
+              />
+              <button
+                className="lg:mx-0  mx-3 mt-2 btn btn-sm btn-info"
+                onClick={handleClick}
+              >
+                Give review
+              </button>
+            </div>
+          ) : (
+            "Owner can't add for rent and give review"
+          )}
         </div>
         <div className="lg:mt-0 mt-4">
           <b>Reviews</b>
