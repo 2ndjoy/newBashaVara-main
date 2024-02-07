@@ -7,7 +7,7 @@ import img1Home from "../../icons/home_263115.png";
 import img1Add from "../../icons/add_992651.png";
 import img1Serv from "../../icons/customer_686348.png";
 import img1profile from "../../icons/add_9sdfd92651.png";
-import homeImg from "../../icons/2163350.png";
+import homeImg from "../../icons/images (2).png";
 
 const Header = () => {
   const { user, logOut, loading } = useContext(AuthContext);
@@ -27,7 +27,7 @@ const Header = () => {
   console.log("userss", userses);
 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-slate-300	">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={1} className="btn btn-ghost lg:hidden">
@@ -74,10 +74,13 @@ const Header = () => {
           </ul>
         </div>
         <Link to="/" className="normal-case text-xl font-bold text-black">
-          <i className="flex align-items-center justify-center gap-2">
-            {" "}
-            <img src={homeImg} className="h-6"></img>FindBasha
-          </i>
+          <div className="flex items-center gap-x-2">
+            <img src={homeImg} className="h-14 rounded-full"></img>
+            <i className="flex align-items-center justify-center gap-2">
+              {" "}
+              FindBasha
+            </i>
+          </div>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">

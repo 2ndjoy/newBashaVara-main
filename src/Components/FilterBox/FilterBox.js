@@ -114,9 +114,9 @@ function FilterBox() {
         {loading ? (
           <p>Loading....</p>
         ) : dataa.length === 0 ? (
-          <p>
-            No data Available. Please search or See all{" "}
-            <Link to="/services" className="bg-red-400 p-1 rounded-lg">
+          <p className="bg-slate-600 p-2 rounded-lg">
+            No results found! Try again with different parameters or See all{" "}
+            <Link to="/services" className="bg-blue-500 p-1 rounded-lg">
               services
             </Link>
           </p>

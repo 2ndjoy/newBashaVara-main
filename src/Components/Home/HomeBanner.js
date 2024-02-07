@@ -5,7 +5,7 @@ import img3 from "../imagess/forcarosel/img3.jpeg";
 import img4 from "../imagess/forcarosel/img4.jpg";
 const HomeBanner = () => {
   return (
-    <div className="mt-28">
+    <div className="mt-16">
       <div className="carousel w-full h-3/4">
         <div id="slide1" className="carousel-item relative w-full">
           <img src={img1} className="w-full  h-3/4" />
