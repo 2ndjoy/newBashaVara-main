@@ -94,25 +94,26 @@ const CheckDetails = () => {
         location: serviceLocation,
         size: size,
         contactNo: renterPhoneNumber,
+        renterEmail: email,
         email: user.email,
         name: user.displayName,
       };
 
-      // fetch("http://localhost:5000/myorders", {
-      //   method: "POST",
-      //   headers: {
-      //     "content-type": "application/json",
-      //   },
-      //   body: JSON.stringify(rent),
-      // })
-      //   .then((res) => res.json())
-      //   .then((result) => {
-      //     if (result.acknowledged) {
-      //       toast.success(`You Have booked successfully`);
-      //       // setLoading(true);
-      //       refetch();
-      //     }
-      //   });
+      fetch("http://localhost:5000/myorders", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(rent),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.acknowledged) {
+            toast.success(`You Have booked successfully`);
+            // setLoading(true);
+            refetch();
+          }
+        });
 
       console.log(rent);
     }

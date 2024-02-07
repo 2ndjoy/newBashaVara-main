@@ -126,11 +126,7 @@ function FilterBox() {
               <div>
                 <div className="card card-compact w-50 h-30 bg-slate-400 text-black shadow-xl">
                   <figure>
-                    <img
-                      src={dat.serviceImage}
-                      alt="Shoes"
-                      className="h-36 w-56"
-                    />
+                    <img src={dat.serviceImage} className="h-36 w-56" />
                   </figure>
                   <div className="card-body">
                     <p className="bold">
