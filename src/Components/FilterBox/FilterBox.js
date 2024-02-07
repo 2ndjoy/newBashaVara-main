@@ -116,7 +116,7 @@ function FilterBox() {
         ) : dataa.length === 0 ? (
           <p>
             No data Available. Please search or See all{" "}
-            <Link to="/services" className="text-blue-900">
+            <Link to="/services" className="bg-red-400 p-1 rounded-lg">
               services
             </Link>
           </p>

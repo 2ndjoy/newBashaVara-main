@@ -126,13 +126,14 @@ const Header = () => {
                       <img src={img1profile} className="h-4"></img> Dashboard
                     </summary>
                     <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                      {userss?.role === "owner" ? (
+                      {userss?.role === "owner" && (
                         <li>
                           <Link to="/myservices">My services</Link>
                         </li>
-                      ) : (
+                      )}{" "}
+                      {userss?.role === "taker" && (
                         <li>
-                          <Link to="/myorders">My orders</Link>
+                          <Link to="/myservices">My orders</Link>
                         </li>
                       )}
                       <li>
