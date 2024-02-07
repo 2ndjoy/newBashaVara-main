@@ -84,23 +84,24 @@ const CheckDetails = () => {
         size: size,
         contactNo: renterPhoneNumber,
         email: user.email,
+        name: user.displayName,
       };
 
-      fetch("http://localhost:5000/myorders", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(rent),
-      })
-        .then((res) => res.json())
-        .then((result) => {
-          if (result.acknowledged) {
-            toast.success(`You Have booked successfully`);
-            // setLoading(true);
-            refetch();
-          }
-        });
+      // fetch("http://localhost:5000/myorders", {
+      //   method: "POST",
+      //   headers: {
+      //     "content-type": "application/json",
+      //   },
+      //   body: JSON.stringify(rent),
+      // })
+      //   .then((res) => res.json())
+      //   .then((result) => {
+      //     if (result.acknowledged) {
+      //       toast.success(`You Have booked successfully`);
+      //       // setLoading(true);
+      //       refetch();
+      //     }
+      //   });
 
       console.log(rent);
     }
@@ -112,14 +113,17 @@ const CheckDetails = () => {
         <div className="hero-content flex-col lg:flex-row">
           <img src={serviceImage} className="max-w-sm rounded-lg shadow-2xl" />
           <div>
-            <p className=" py-6">
+            <p className=" py-2">
               <b>Available From:</b> {availability}
             </p>
-            <p className="py-6">
+            <p className="py-2">
               <b>Description: </b>
               {description}
             </p>
-            <p className="py-6">
+            <p className=" py-2">
+              <b>Owner:</b> {renterName}
+            </p>
+            <p className="py-2">
               <b>Contact: </b>
               {renterPhoneNumber}
             </p>

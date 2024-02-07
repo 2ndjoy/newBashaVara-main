@@ -31,7 +31,7 @@ const HomeServices = () => {
               </p>
               <p className="bold">
                 <span className="font-bold">Size: </span>
-                {servic?.size}
+                {servic?.email}
               </p>
               <p className="bold">
                 <span className="font-bold">Rent fee:</span> {servic?.rentFee}{" "}
