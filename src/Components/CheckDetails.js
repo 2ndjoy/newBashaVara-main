@@ -132,6 +132,10 @@ const CheckDetails = () => {
               <b>Description: </b>
               {description}
             </p>
+            <p className="py-2">
+              <b>Fee: </b>
+              {rentFee} tk
+            </p>
             <p className=" py-2">
               <b>Owner:</b> {renterName}
             </p>
