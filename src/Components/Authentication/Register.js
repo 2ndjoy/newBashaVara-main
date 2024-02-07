@@ -135,9 +135,22 @@ const Register = () => {
               </label>
               <input
                 className="input text-black input-bordered w-full max-w-xs"
-                {...register("phone", { required: "phone is required" })}
                 type="number"
+                {...register("phone", {
+                  required: "phone is required",
+                  pattern: {
+                    value: /^(\+?88)?01[3-9]\d{8}$/,
+                    message: "Write 88 before",
+                  },
+                })}
               />
+            </div>
+            <div>
+              {errors.phone && (
+                <p role="alert" className="text-warning">
+                  {errors.phone.message}
+                </p>
+              )}
             </div>
 
             <div className="form-control w-full max-w-xs">

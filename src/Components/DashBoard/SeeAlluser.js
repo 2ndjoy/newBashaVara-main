@@ -43,19 +43,26 @@ const SeeAlluser = () => {
           <div className="card-body">
             <h2 className="card-title">User Name: {item?.name}</h2>
             <p>User Email: {item?.email}</p>
-            <div className="card-actions justify-end">
-              {user?.displayName == item?.name ? (
-                <p>This is you</p>
-              ) : item?.status === "verified" ? (
-                <p>This user is verified</p>
-              ) : (
-                <button
-                  className="btn btn-primary"
-                  onClick={() => addStatus(item?._id)}
-                >
-                  Allow as verified
+            <div className="flex items-center space-x-4">
+              <div className="card-actions justify-end">
+                {user?.displayName == item?.name ? (
+                  <p>This is you</p>
+                ) : item?.status === "verified" ? (
+                  <p>This user is verified</p>
+                ) : (
+                  <button
+                    className="btn btn-sm btn-primary"
+                    onClick={() => addStatus(item?._id)}
+                  >
+                    Allow as verified
+                  </button>
+                )}
+              </div>
+              <div>
+                <button className="btn btn-sm bg-red-700">
+                  Delete this user
                 </button>
-              )}
+              </div>
             </div>
           </div>
         </div>

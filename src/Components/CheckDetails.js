@@ -175,14 +175,16 @@ const CheckDetails = () => {
         <div className="lg:mt-0 mt-4">
           <b>Reviews</b>
           <br />
-          {reviewss.map((review) => (
-            <div className="border-solid border-2 border-blue-400 p-5 rounded lg:mt-2 mt-3">
-              <b>{review?.userName}</b>
-              {/* <hr className="h-5" /> */}
-              <br />
-              <p>{review?.review}</p>
-            </div>
-          ))}
+          {reviewss.length === 0
+            ? "No reviews yet!"
+            : reviewss.map((review) => (
+                <div className="border-solid border-2 border-blue-400 p-5 rounded lg:mt-2 mt-3">
+                  <b>{review?.userName}</b>
+                  {/* <hr className="h-5" /> */}
+                  <br />
+                  <p>{review?.review}</p>
+                </div>
+              ))}
         </div>
       </div>
     </div>
