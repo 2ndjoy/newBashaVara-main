@@ -22,27 +22,25 @@ const ServiceId = ({ service }) => {
         </figure>
         <div className="card-body">
           <p className="bold">
-            <span className="font-bold">Location:</span>{" "}
-            {serviceLocation.toUpperCase()}
+            <span className="font-bold">Location:</span> {serviceLocation}
           </p>
           <p className="bold">
             <span className="font-bold">Size: </span>
-            {size.toUpperCase()}
+            {size}
           </p>
           <p className="bold">
             <span className="font-bold">Rent fee:</span> {rentFee} tk
           </p>
           <p className="bold">
-            <span className="font-bold">Available from</span>{" "}
-            {availability.toUpperCase()}
+            <span className="font-bold">Available from</span> {availability}
           </p>
           <p className="bold">
             <span className="font-bold">Owner: </span>
-            {renterName.toUpperCase()}
+            {renterName}
           </p>
           <p className="bold">
             <span className="font-bold">Contact: </span>
-            {renterPhoneNumber.toUpperCase()}
+            {renterPhoneNumber}
           </p>
           <p>
             <span className="font-bold">Details: </span>

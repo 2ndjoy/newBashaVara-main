@@ -28,8 +28,8 @@ const Register = () => {
       .catch((error) => console.error(error));
   };
 
-  const saveUser = (email, name, role) => {
-    const user = { email, name, role };
+  const saveUser = (email, name, role, phone, image) => {
+    const user = { email, name, role, phone, image };
     fetch("http://localhost:5000/users", {
       method: "POST",
       headers: {
@@ -63,7 +63,13 @@ const Register = () => {
               const user = result.user;
               console.log(user);
               // saveUser(data.email, data.name);
-              saveUser(data.email, data.name, data.role);
+              saveUser(
+                data.email,
+                data.name,
+                data.role,
+                data.phone,
+                imgData.data
+              );
               updateUserProfile(data.name, imgData.data.display_url);
               // calling handle email verification
               handleEmailVerification();
@@ -81,7 +87,6 @@ const Register = () => {
         });
     }
   };
-  // console.log(data)
 
   return (
     <div className="flex justify-center">

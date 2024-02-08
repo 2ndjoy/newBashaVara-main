@@ -32,6 +32,24 @@ const SeeAlluser = () => {
     // console.log(id);
   };
 
+  const handleDelete = (_id) => {
+    console.log(_id);
+    const procced = window.confirm("Are you sure to confirm this order");
+    if (procced) {
+      fetch(`http://localhost:5000/userss/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            // refetch();
+            toast.success("Deleted successfully");
+          }
+        });
+    }
+  };
+
   return (
     <div className="grid justify-center gap-6">
       {allUsers.map((item) => (
@@ -59,7 +77,10 @@ const SeeAlluser = () => {
                 )}
               </div>
               <div>
-                <button className="btn btn-sm bg-red-700">
+                <button
+                  onClick={() => handleDelete(item?._id)}
+                  className="btn btn-error btn-xs"
+                >
                   Delete this user
                 </button>
               </div>

@@ -97,6 +97,9 @@ const CheckDetails = () => {
         renterEmail: email,
         email: user.email,
         name: user.displayName,
+        serviceImage: serviceImage,
+        rentTakerphone: userss?.phone,
+        rentTakerImage: user.photoURL,
       };
 
       fetch("http://localhost:5000/myorders", {
