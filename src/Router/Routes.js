@@ -15,6 +15,7 @@ import MyOrders from "../Components/DashBoard/MyOrders";
 import MyProfile from "../Components/DashBoard/MyProfile";
 import MyClients from "../Components/DashBoard/MyClients";
 import SeeAlluser from "../Components/DashBoard/SeeAlluser";
+import AdminDashboard from "../Components/DashBoard/AdminDashboard";
 
 const router = createBrowserRouter([
   {
@@ -96,6 +97,10 @@ const router = createBrowserRouter([
       {
         path: "/myclients",
         element: <MyClients></MyClients>,
+      },
+      {
+        path: "/admindash",
+        element: <AdminDashboard></AdminDashboard>,
       },
     ],
   },

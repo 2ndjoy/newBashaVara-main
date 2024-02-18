@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../UserContext/AuthProvider";
 import toast from "react-hot-toast";
-
+import { Link } from "react-router-dom";
+import arrowImg from "../../Components/imagess/left-arrow.png";
 const SeeAlluser = () => {
   const [allUsers, setAllusers] = useState([]);
 
@@ -52,6 +53,13 @@ const SeeAlluser = () => {
 
   return (
     <div className="grid justify-center gap-6">
+      {" "}
+      <Link to="/admindash" className="mt-5">
+        <button className="btn btn-sm  gap-2">
+          <img src={arrowImg} className="h-4 bg-white rounded p-1 ml-1"></img>{" "}
+          Back
+        </button>
+      </Link>
       {allUsers.map((item) => (
         <div className="card w-96 bg-base-500 shadow-xl">
           <figure>

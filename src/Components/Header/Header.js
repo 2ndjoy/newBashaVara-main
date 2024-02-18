@@ -123,37 +123,44 @@ const Header = () => {
                 className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
               >
                 <li>
-                  <details className="dropdown mb-32">
+                  {userss?.role === "admin" ? (
                     <summary className="m-1 font-semibold flex align-items-center gap-2">
                       {" "}
-                      <img src={img1profile} className="h-4"></img> Dashboard
+                      <Link to="/admindash">Go to Admin Dashboard</Link>
                     </summary>
-                    <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-                      {userss?.role === "owner" && (
+                  ) : (
+                    <details className="dropdown mb-32">
+                      <summary className="m-1 font-semibold flex align-items-center gap-2">
+                        {" "}
+                        <img src={img1profile} className="h-4"></img> Dashboard
+                      </summary>
+                      <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+                        {userss?.role === "owner" && (
+                          <li>
+                            <Link to="/myservices">My services</Link>
+                          </li>
+                        )}{" "}
+                        {userss?.role === "taker" && (
+                          <li>
+                            <Link to="/myorders">My orders</Link>
+                          </li>
+                        )}
                         <li>
-                          <Link to="/myservices">My services</Link>
+                          <Link to="/myprofile">My profile</Link>
                         </li>
-                      )}{" "}
-                      {userss?.role === "taker" && (
-                        <li>
-                          <Link to="/myorders">My orders</Link>
-                        </li>
-                      )}
-                      <li>
-                        <Link to="/myprofile">My profile</Link>
-                      </li>
-                      {userss?.role === "owner" && (
-                        <li>
-                          <Link to="/myclients">My clients</Link>
-                        </li>
-                      )}
-                      {userss?.role === "admin" && (
-                        <li>
-                          <Link to="/allusers">See all users</Link>
-                        </li>
-                      )}
-                    </ul>
-                  </details>
+                        {userss?.role === "owner" && (
+                          <li>
+                            <Link to="/myclients">My clients</Link>
+                          </li>
+                        )}
+                        {userss?.role === "admin" && (
+                          <li>
+                            <Link to="/allusers">See all users</Link>
+                          </li>
+                        )}
+                      </ul>
+                    </details>
+                  )}
                 </li>
                 <li className="mt-2">
                   <button
