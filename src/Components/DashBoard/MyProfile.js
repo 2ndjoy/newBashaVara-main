@@ -18,7 +18,7 @@ const MyProfile = () => {
       .then((data) => setMyData(data));
   }, [user?.email]);
   const [myId] = myData;
-  console.log("myData", myId?._id);
+  console.log("myData", myId);
 
   const {
     register,
@@ -27,7 +27,7 @@ const MyProfile = () => {
     reset,
   } = useForm();
 
-  const handleAddService = (data) => {
+  const handleAddNID = (data) => {
     // console.log(data);
 
     const photo = data.photo[0];
@@ -74,20 +74,21 @@ const MyProfile = () => {
             <p>
               <b>Email: </b> {user?.email}
             </p>
-            <button className="btn btn-primary mt-5">Edit</button>
             <br />
             <br />
-            <div className="flex items-center justify-center">
-              <label htmlFor="my_modal_7" className="btn btn-success">
-                Verification
-              </label>
-            </div>
+            {myId?.role !== "admin" && (
+              <div className="flex items-center justify-center">
+                <label htmlFor="my_modal_7" className="btn btn-success">
+                  Verification
+                </label>
+              </div>
+            )}
 
             {/* Put this part before </body> tag */}
             <input type="checkbox" id="my_modal_7" className="modal-toggle" />
             <div className="modal">
               <div className="modal-box">
-                <form onSubmit={handleSubmit(handleAddService)}>
+                <form onSubmit={handleSubmit(handleAddNID)}>
                   <div className="form-control w-full max-w-xs">
                     <label className="label">
                       <span className="label-text text-black">

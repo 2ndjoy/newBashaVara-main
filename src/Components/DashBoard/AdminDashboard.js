@@ -26,7 +26,7 @@ const AdminDashboard = () => {
         <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
           {/* Sidebar content here */}
           <li>
-            <Link to="/allusers">See all users</Link>
+            <Link to="/allusers">Go to DashBoard</Link>
           </li>
           {/* <li>
             <Link to="/myprofile">My Profile</Link>

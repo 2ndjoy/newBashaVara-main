@@ -4,7 +4,7 @@ import "./SmallLoading.css";
 const SmallLoaing = () => {
   return (
     <div className="flex justify-center items-center h-full">
-      <div class="lds-dual-ring"></div>
+      <div className="lds-dual-ring"></div>
     </div>
   );
 };

@@ -27,7 +27,7 @@ const Login = () => {
         // console.log(user);
         setLoginemail(data.email);
         if (user.emailVerified) {
-          navigate(from, { replace: true });
+          navigate("/");
           setLoading(false);
         } else {
           toast.error("Please verify email");

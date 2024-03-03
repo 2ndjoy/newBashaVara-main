@@ -30,7 +30,7 @@ const MyOrders = () => {
 
   const handleDelete = (_id) => {
     console.log(_id);
-    const procced = window.confirm("Are you sure to confirm this order");
+    const procced = window.confirm("Are you sure to confirm this process");
     if (procced) {
       fetch(`http://localhost:5000/myorders/${_id}`, {
         method: "DELETE",
@@ -46,10 +46,31 @@ const MyOrders = () => {
     }
   };
 
+  const handleDone = (_id) => {
+    console.log(_id);
+    const procced = window.confirm("Are you sure to confirm this order");
+    if (procced) {
+      fetch(`http://localhost:5000/services/${_id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data.deletedCount > 0) {
+            handleDelete(_id);
+            refetch();
+            toast.success("Rented successfully");
+          } else {
+            toast.success("Already rented");
+          }
+        });
+    }
+  };
+
   return (
     <div className="flex justify-center">
       <div className="">
-        <b>My Orders</b>
+        <b>My Checklist</b>
         <br />
         <br />
         <div className="overflow-x-auto">
@@ -64,6 +85,7 @@ const MyOrders = () => {
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -71,7 +93,7 @@ const MyOrders = () => {
 
               {services.map((serv) => (
                 <tr>
-                  <th>1</th>
+                  <th></th>
                   <td>{serv?.location}</td>
                   <td>{serv?.size}</td>
                   <td>{serv?.contactNo}</td>
@@ -83,6 +105,15 @@ const MyOrders = () => {
                       className="btn btn-error btn-xs"
                     >
                       Cancel
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleDone(serv.id)}
+                      className="btn btn-success btn-xs"
+                      title="Call to owner before renting"
+                    >
+                      Rent now
                     </button>
                   </td>
                 </tr>

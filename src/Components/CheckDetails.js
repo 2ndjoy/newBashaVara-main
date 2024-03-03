@@ -12,6 +12,35 @@ const CheckDetails = () => {
   const [review, setReview] = useState("");
 
   const [userses, setuserss] = useState([]);
+  const [myOrdered, setMyOrdered] = useState([]);
+
+  const {
+    _id,
+    renterName,
+    rentFee,
+    availability,
+    size,
+    description,
+    serviceImage,
+    renterPhoneNumber,
+    serviceLocation,
+    email,
+  } = useLoaderData();
+
+  const { data: myorders = [] } = useQuery({
+    queryKey: ["services"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:5000/myordersss/${_id}`);
+      const data = await res.json();
+      return data;
+    },
+  });
+
+  const xx = myorders.map((myOrder) => myOrder.id);
+  console.log("xx", myorders.length);
+
+  const yy = myorders.find((x) => x === _id);
+  console.log("yy", yy);
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
@@ -63,18 +92,6 @@ const CheckDetails = () => {
       // Optionally, you can show a message or perform some other action
     }
   };
-  const {
-    _id,
-    renterName,
-    rentFee,
-    availability,
-    size,
-    description,
-    serviceImage,
-    renterPhoneNumber,
-    serviceLocation,
-    email,
-  } = useLoaderData();
   // console.log("CheckDetails", _id);
 
   const { data: reviewss = [], refetch } = useQuery({
@@ -112,7 +129,7 @@ const CheckDetails = () => {
         .then((res) => res.json())
         .then((result) => {
           if (result.acknowledged) {
-            toast.success(`You Have booked successfully`);
+            toast.success(`You Have added to checklist successfully`);
             // setLoading(true);
             refetch();
           }
@@ -151,9 +168,18 @@ const CheckDetails = () => {
               {email}
             </p>
             {userss?.role === "taker" && (
-              <button className="btn btn-black" onClick={() => handleRent(_id)}>
-                Add for Rent
-              </button>
+              <div>
+                {myorders.length > 0 ? (
+                  "Already added"
+                ) : (
+                  <button
+                    className="btn btn-black"
+                    onClick={() => handleRent(_id)}
+                  >
+                    Add to checklist
+                  </button>
+                )}
+              </div>
             )}
           </div>
         </div>

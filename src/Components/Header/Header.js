@@ -126,7 +126,7 @@ const Header = () => {
                   {userss?.role === "admin" ? (
                     <summary className="m-1 font-semibold flex align-items-center gap-2">
                       {" "}
-                      <Link to="/admindash">Go to Admin Dashboard</Link>
+                      <Link to="/allusers">Go to Admin Dashboard</Link>
                     </summary>
                   ) : (
                     <details className="dropdown mb-32">
@@ -142,7 +142,7 @@ const Header = () => {
                         )}{" "}
                         {userss?.role === "taker" && (
                           <li>
-                            <Link to="/myorders">My orders</Link>
+                            <Link to="/myorders">My checklist</Link>
                           </li>
                         )}
                         <li>

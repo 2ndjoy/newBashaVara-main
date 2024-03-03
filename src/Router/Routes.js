@@ -32,7 +32,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/addservices",
-        element: <AddService></AddService>,
+        element: (
+          <PrivateRoute>
+            {" "}
+            <AddService></AddService>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/homeservices",
@@ -52,7 +57,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/allusers",
-        element: <SeeAlluser></SeeAlluser>,
+        element: (
+          <PrivateRoute>
+            <SeeAlluser></SeeAlluser>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/checkDetails",
@@ -84,7 +93,11 @@ const router = createBrowserRouter([
 
       {
         path: "/myorders",
-        element: <MyOrders></MyOrders>,
+        element: (
+          <PrivateRoute>
+            <MyOrders></MyOrders>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/myprofile",
@@ -96,11 +109,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/myclients",
-        element: <MyClients></MyClients>,
+        element: (
+          <PrivateRoute>
+            <MyClients></MyClients>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/admindash",
-        element: <AdminDashboard></AdminDashboard>,
+        element: (
+          <PrivateRoute>
+            <AdminDashboard></AdminDashboard>
+          </PrivateRoute>
+        ),
       },
     ],
   },

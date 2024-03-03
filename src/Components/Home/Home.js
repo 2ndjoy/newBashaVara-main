@@ -12,7 +12,7 @@ const Home = () => {
     <div>
       <FilterBox></FilterBox>
       <AddsOnHome></AddsOnHome>
-      <div className="lg:flex grid gap-24 mx-40 px-16 mt-16">
+      <div className="lg:flex grid gap-24 mx-24 mt-16">
         <HomeServices></HomeServices>
       </div>
       <HomeBanner></HomeBanner>
